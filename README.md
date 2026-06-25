@@ -9,7 +9,7 @@ Shis automatically handles text overflow: if a slide contains too much text to f
 ### 1. Format your Markdown
 Write your content in a standard `.md` file. Separate each slide using a horizontal rule (`---`).
 
-\```markdown
+```markdown
 # Slide 1
 This is the first image in the carousel.
 
@@ -18,21 +18,21 @@ This is the first image in the carousel.
 # Slide 2
 This text will appear on the second image.
 If I write a massive amount of text here, Shis will automatically shrink the font size so it all fits without getting cut off!
-\```
+```
 
 ### 2. Enter the Environment
 Because Shis relies on low-level rendering libraries, it uses a Nix flake to guarantee a clean, reproducible environment. Initialize it first:
 
-\```bash
+```bash
 nix develop
-\```
+```
 
 ### 3. Generate the Slides
 Run the script by providing the path to your Markdown file and the desired name for your output folder.
 
-\```bash
+```bash
 python main.py /path/to/stuff.md stuff
-\```
+```
 
 The script will automatically create a directory named `stuff/` in the same location as your `.md` file and populate it with your generated `slide_1.png`, `slide_2.png`, etc.
 
