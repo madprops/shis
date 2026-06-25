@@ -39,6 +39,7 @@ def generate_carousel(md_filepath, output_subdir_name):
                 html_document = f"""
                 <!DOCTYPE html>
                 <html>
+
                 <head>
                     <meta charset="utf-8">
                     <style>
@@ -71,9 +72,11 @@ def generate_carousel(md_filepath, output_subdir_name):
                         {user_styles}
                     </style>
                 </head>
+
                 <body>
                     {html_snippet}
                 </body>
+
                 </html>
                 """
 
