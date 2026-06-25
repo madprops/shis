@@ -44,7 +44,7 @@ Most HTML-to-Image tools require installing massive, heavy browser engines like 
 2. **Auto-Scaling Layout:** It feeds the HTML to a layout engine set to a strict canvas size (e.g., 1080x1350 for Instagram). If the text overflows onto a "second page", a loop triggers that mathematically reduces the base font size by 1 pixel at a time. It continuously re-renders until the engine confirms the text perfectly fits onto a single page.
 3. **Rasterization:** Once the perfect font size is found, the layout is exported as a temporary vector PDF, which is instantly rasterized into a crisp PNG image.
 
-## 🛸 Technologies Leveraged
+## 🐔 Technologies Leveraged
 
 * **Python:** Core scripting, file routing, and logic orchestration.
 * **WeasyPrint:** A powerful, lightweight layout engine that converts HTML/CSS into paginated PDFs. This replaces the need for headless web browsers, handling the complex text-wrapping and CSS flexible box layouts natively.
