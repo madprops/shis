@@ -5,14 +5,14 @@ import markdown
 import weasyprint
 import fitz  # PyMuPDF
 
-def generate_carousel(md_filepath, output_subdir_name):
+def generate_carousel(md_filepath):
     md_path = Path(md_filepath)
 
     if not md_path.is_file():
         print(f"Error: File '{md_filepath}' not found.")
         return
 
-    out_dir = md_path.parent / output_subdir_name
+    out_dir = md_path.parent / md_path.stem
     out_dir.mkdir(parents=True, exist_ok=True)
 
     with open(md_filepath, "r", encoding="utf-8") as f:
@@ -128,6 +128,5 @@ def generate_carousel(md_filepath, output_subdir_name):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate Instagram Carousel from Markdown")
     parser.add_argument("md_file", help="Path to the markdown file")
-    parser.add_argument("out_dir", help="Name of the output subdirectory")
     args = parser.parse_args()
-    generate_carousel(args.md_file, args.out_dir)
+    generate_carousel(args.md_file)

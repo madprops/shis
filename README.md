@@ -28,10 +28,10 @@ nix develop
 ```
 
 ### 3. Generate the Slides
-Run the script by providing the path to your Markdown file and the desired name for your output folder.
+Run the script by providing the path to your Markdown file.
 
 ```bash
-python main.py /path/to/stuff.md stuff
+python main.py /path/to/stuff.md
 ```
 
 The script will automatically create a directory named `stuff/` in the same location as your `.md` file and populate it with your generated `slide_1.png`, `slide_2.png`, etc.
