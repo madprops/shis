@@ -34,6 +34,18 @@ def generate_carousel(md_filepath, output_subdir_name):
         if len(slide_content) > 0:
             html_snippet = markdown.markdown(slide_content)
             font_size = 60
+            lines = [line for line in slide_content.splitlines() if len(line.strip()) > 0]
+            single_line_css = ""
+
+            if len(lines) == 1:
+                single_line_css = """
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    height: 1270px;
+                """
 
             while True:
                 html_document = f"""
@@ -55,6 +67,7 @@ def generate_carousel(md_filepath, output_subdir_name):
                             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
                             color: #e6edf3;
                             font-size: {font_size}px;
+                            {single_line_css}
                         }}
 
                         h1 {{ font-size: 2.2em; color: #58a6ff; margin-top: 0; margin-bottom: 0.5em; }}
@@ -69,6 +82,15 @@ def generate_carousel(md_filepath, output_subdir_name):
                             font-style: italic;
                         }}
 
+                        img {{
+                            max-width: 100%;
+                            max-height: 600px;
+                            object-fit: contain;
+                            border-radius: 12px;
+                            display: block;
+                            margin: 1em auto;
+                        }}
+
                         {user_styles}
                     </style>
                 </head>
@@ -80,7 +102,10 @@ def generate_carousel(md_filepath, output_subdir_name):
                 </html>
                 """
 
-                doc = weasyprint.HTML(string=html_document).render()
+                doc = weasyprint.HTML(
+                    string=html_document,
+                    base_url=str(md_path.parent)
+                ).render()
 
                 if len(doc.pages) == 1:
                     pdf_bytes = doc.write_pdf()
